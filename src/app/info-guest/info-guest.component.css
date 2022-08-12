@@ -1,0 +1,110 @@
+.container {
+    max-width: 450px;
+    width: 550px;
+    min-height: 550px;
+
+    background-color: var(--bg_secundary);
+
+    border-radius: 10px;
+}
+
+.header {
+    background-color: var(--bg_primary);
+    display: flex;
+    justify-content: space-between;
+
+    height: calc(var(--header-size)/1.5);
+
+    border-radius: 10px 10px 0 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: #FFF;
+}
+
+.section-title img {
+    margin: 0 15px;
+}
+
+.close {
+    background-color: var(--bg_ocupado);
+    color: #FFF;
+    font-weight: 600;
+
+    height: 100%;
+    width: calc(var(--header-size)/1.5);
+
+    border: none;
+    border-radius: 0 10px 0 0;
+}
+
+.content {
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+.profile-image {
+    min-width: 200px;
+    min-height: 200px;
+
+    border-radius: 50%;
+
+    background-color: #FFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #737373;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.field, .double-field {
+    width: 100%;
+    display: flex;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+
+.field p, .double-field p {
+    font-size: 14px;
+    font-style: italic;
+    margin: 5px 0;
+}
+
+.field span, .double-field span {
+    font-size: 18px;
+}
+
+.double-field {
+    justify-content: space-between;
+}
+
+.field div, .double-field div {
+    border: none;
+    border-bottom: 1px solid #737373;
+    border-radius: 5px;
+    padding: 0 5px;
+    background-color: #FFF;
+}
+
+.field div {
+    width: 100%;
+}
+
+.double-field div {
+    width: 45%;
+}

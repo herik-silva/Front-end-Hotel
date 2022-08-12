@@ -1,0 +1,56 @@
+<div class="header">
+    <div class="buttons" *ngIf="checkAcessLevel()">
+        <div class="button">
+            <app-button [buttonName]="'Novo Quarto'" [imagePath]="'assets/icons/add.png'" [selectedClass]="'button w-auto rounded btn-gray'" (click)="selectSection('NEW_ROOM')"></app-button>
+        </div>
+        <div class="button">
+            <app-button [buttonName]="'Remover Quarto'" [imagePath]="'assets/icons/remove.png'" [selectedClass]="'button w-auto rounded btn-gray'" (click)="selectSection('REMOVE_ROOM')"></app-button>
+        </div>
+        <div class="button">
+            <app-button [buttonName]="'Nova Acomodação'" [selectedClass]="'button btn-gray rounded'" (click)="selectSection('NEW_ACCOMMODATION')"></app-button>
+        </div>
+    </div>
+    <div class="filter">
+        <h3>Filtrar</h3>
+        <div class="btn-filters">
+            <button class="free" [innerText]="'Livre'" (click)="filterToFree()"></button>
+            <button class="occupied" [innerText]="'Ocupado'" (click)="filterToOccupied()"></button>
+        </div>
+    </div>
+</div>
+<div class="roomList">
+    <div class="room" *ngFor="let room of roomView; index as id">
+        <app-room-card
+        [cardTitle]="'Quarto ' + room.number"
+        [guestName]="room.guestName()"
+        [reserveDate]="room.formateReserveDate()"
+        [status]="room.status"
+        [cardId]="id"
+        [btnRemoveClass]="btnRemoveClass"
+        (cardIdInfo)="showInformation($event)"
+        (cardIdDelete)="removeRoom($event)"
+        (reserveCard)="reserveRoom($event)"></app-room-card>
+    </div>
+</div>
+<div class="new-room" *ngIf="selectedSection == sectionList.NEW_ROOM">
+    <app-new-room 
+    (closeEventEmitter)="selectSection($event)"
+    (newRoom)="addNewRoom($event)"
+    [iconPath]="'assets/icons/quartos.png'"
+    [accommodationList]="accommodationList"></app-new-room>
+</div>
+<div class="edit-room" *ngIf="selectedSection == sectionList.EDIT_ROOM">
+    <app-new-room [room]="selectedRoom" [iconPath]="'assets/icons/quartos.png'" [accommodationList]="accommodationList"
+    (closeEventEmitter)="selectSection($event)"
+    (editRoom)="editRoom($event)"></app-new-room>
+</div>
+<div class="info-room" *ngIf="selectedSection == sectionList.INFORMATION">
+    <app-view-room-card [room]="selectedRoom" [accommodationList]="accommodationList" (closeEventEmmiter)="selectSection($event)"
+    (editRoomEventEmitter)="selectSection($event)"></app-view-room-card>
+</div>
+<div class="new-accommodation" *ngIf="selectedSection == sectionList.NEW_ACCOMMODATION">
+    <app-new-accommodation
+    (closeEventEmitter)="selectSection($event)"
+    (newAccommodationEmitter)="addAccommodation($event)"
+    ></app-new-accommodation>
+</div>

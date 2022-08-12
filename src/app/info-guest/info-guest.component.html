@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="header">
+        <div class="section-title">
+            <app-button (click)="editGuest()" [selectedClass]="'button btn-gray'" [buttonName]="'Editar Hospede'" [imagePath]="'assets/icons/hospede.png'"></app-button>
+        </div>
+        <button class="close" (click)="close()">X</button>
+    </div>
+    <div class="content">
+        <div class="profile-image">
+            <h3 *ngIf="guest.getPhoto() == undefined">Sem Foto</h3>
+            <img *ngIf="guest.getPhoto() != undefined" [src]="guest.getPhoto()">
+        </div>
+        <div class="field">
+            <div class="name">
+                <p><strong>Nome</strong></p>
+                <span [innerText]="guest.getName()"></span>
+            </div>
+        </div>
+        <div class="double-field">
+            <div class="cpf">
+                <p><strong>CPF</strong></p>
+                <span [innerText]="guest.getCpf()"></span>
+            </div>
+            <div class="contact">
+                <p><strong>Tel. Contato</strong></p>
+                <span [innerText]="guest.getContactPhone()[0]"></span>
+            </div>
+        </div>
+        <div class="field" *ngIf="getCompanyName() != undefined">
+            <div class="company">
+                <p><strong>Empresa</strong></p>
+                <span [innerText]="getCompanyName()"></span>
+            </div>
+        </div>
+        <div class="field">
+            <div class="city">
+                <p><strong>Cidade</strong></p>
+                <span [innerText]="guest.getCity()"></span>
+            </div>
+        </div>
+    </div>
+</div>

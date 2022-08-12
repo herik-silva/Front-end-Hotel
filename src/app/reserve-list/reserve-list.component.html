@@ -1,0 +1,20 @@
+<table>
+    <thead>
+        <tr>
+            <th>No. Quarto</th>
+            <th>Hospede</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>Qtde. Pessoas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reserveRow of reserveListView; index as i" (click)="select(i)" (dblclick)="showInformations()" [ngClass]="reserveRow.row.class">
+            <td [innerText]="reserveRow.reserve.roomNumber"></td>
+            <td [innerText]="reserveRow.reserve.guestName"></td>
+            <td [innerText]="getValidString(reserveRow.reserve.checkIn)"></td>
+            <td [innerText]="getValidString(reserveRow.reserve.checkOut)"></td>
+            <td [innerText]="reserveRow.reserve.amountPeople"></td>
+        </tr>
+    </tbody>
+</table>

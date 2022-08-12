@@ -1,0 +1,104 @@
+.container {
+    background-color: var(--bg_secundary);
+    min-width: 500px;
+    border-radius: 10px;
+    box-shadow: 3px 3px #303030;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    min-height: 50px;
+    margin-bottom: 20px;
+}
+
+section {
+    background-color: var(--bg_primary);
+    color: #FFF;
+
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+
+    border-radius: 10px 0 10px 0;
+}
+
+section img {
+    height: 24px;
+    margin: 0 15px;
+}
+
+.close {
+    background-color: var(--btn_close);
+    color: #FFF;
+
+    min-width: 50px;
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0 10px 0 10px;
+
+    cursor: pointer
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-image {
+    min-width: 450px;
+    min-height: 300px;
+    background-color: #FFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.input-image img {
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.inputs {
+    margin: 20px 0 60px 0;
+    min-width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.input:nth-child(1){
+    width: 120px;
+}
+
+.input input, .input select {
+    text-align: center;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #101010;
+}
+
+.hidden {
+    display: none;
+}
+
+span {
+    color: var(--btn_close);
+    font-weight: 600;
+    margin-bottom: 20px;
+}

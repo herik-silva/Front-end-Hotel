@@ -1,0 +1,21 @@
+<div class="container">
+    <header>
+        <div class="title-list">
+            <h3>Lista de Quartos</h3>
+        </div>
+        <button class="close" (click)="close()">X</button>
+    </header>
+    <div class="input">
+        <input type="text" class="b-rounded-5" [placeholder]="placeholder" [formControl]="inputValue" (keydown)="filter($event)">
+        <div class="filters">
+            <button id="number" class="option b-rounded-5" (click)="setFilterType('number')">Número</button>
+            <button id="accommodation" class="option b-rounded-5" (click)="setFilterType('accommodation')">Acomodação</button>
+        </div>
+    </div>
+    <div class="list">
+        <div *ngFor="let room of minimalRoomListView; index as i" (click)="select(i)" (dblclick)="emitRoom()" [ngClass]="room.className">
+            <span [innerText]="'Quarto ' + room.number + ' - ' + room.acommodationName"></span>
+        </div>
+    </div>
+    <button class="confirm" (click)="emitRoom()">Selecionar</button>
+</div>

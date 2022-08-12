@@ -1,0 +1,80 @@
+.card-container {
+    min-width: 250px;
+    min-height: 200px;
+
+    width: 250px;
+
+    border: 1px solid var(--bg_primary);
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.header-card {
+    color: #FFF;
+
+    border-radius: 9px 9px 0 0;
+
+    min-height: var(--roomCard-min-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+}
+
+.guest-name, .guest-reserve {
+    display: flex;
+    align-items: center;
+
+    margin-top: 26px;
+}
+
+.guest-name img, .guest-reserve img {
+    margin-left: 14px;
+    margin-right: 6px;
+}
+
+.buttons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.livre {
+    background-color: var(--bg_livre);
+}
+
+.ocupado {
+    background-color: var(--bg_ocupado);
+}
+
+
+.close {
+    min-width: calc(var(--roomCard-min-height) - 30px);
+    min-height: calc(var(--roomCard-min-height) - 30px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-weight: bold;
+    background-color: var(--bg_ocupado);
+    border-radius: 10px 0 10px ;
+
+    cursor: pointer;
+
+    border: 2px solid #FFF;
+}
+
+.close:hover {
+    border-radius: 20px;
+}
+
+.close:active {
+    transform: scale(0.9,0.9);
+}
+
+.hidden {
+    display: none;
+}

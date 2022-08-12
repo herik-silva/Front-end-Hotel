@@ -1,0 +1,10 @@
+<div class="container">
+    <app-menu-principal (changeViewEmitter)="changeView($event)" [username]="getUserName()"></app-menu-principal>
+    <div class="views bg-dark">
+        <app-room-view *ngIf="selectedView == 'quartos'" [responsabilityId]="getResponsabilityId()"></app-room-view>
+        <app-guest-view *ngIf="selectedView == 'hospedes'"></app-guest-view>
+        <app-reserve-view *ngIf="selectedView == 'reservas'">Reservas</app-reserve-view>
+        <h2 *ngIf="selectedView == 'recados'">Recados</h2>
+    </div>
+</div>
+<!-- <app-minimal-room-list></app-minimal-room-list> -->

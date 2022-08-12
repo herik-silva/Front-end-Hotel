@@ -1,0 +1,36 @@
+table {
+    min-width: calc(100vw - 260px);
+    border-collapse: collapse;
+}
+
+thead {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: var(--bg_primary);
+    color: #FFF;
+    height: 25px;
+}
+
+tbody {
+    background-color: #FFF;
+}
+
+tbody td {
+    text-align: center;
+    border-left: 2px solid var(--bg_primary);
+}
+
+tbody tr {
+    border-bottom: 2px solid var(--bg_primary);
+    height: 25px;
+}
+
+tbody tr:last-child {
+    border-left: none;
+}
+
+.selected {
+    background-color: rgb(209, 209, 209);
+}

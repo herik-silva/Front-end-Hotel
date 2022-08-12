@@ -1,0 +1,41 @@
+<div class="header">
+    <div class="buttons">
+        <div class="button">
+            <app-button [buttonName]="'Novo Hospede'" [imagePath]="'assets/icons/add.png'" [selectedClass]="'button w-auto rounded btn-gray'" (click)="setSection('NEW_GUEST')"></app-button>
+        </div>
+        <div class="button">
+            <app-button [buttonName]="'Remover Hospede'" [imagePath]="'assets/icons/remove.png'" [selectedClass]="'button w-auto rounded btn-gray'"></app-button>
+        </div>
+    </div>
+</div>
+<div class="guest-list">
+    <app-guest-list
+    (selectedGuestEmitter)="setSelectedGuest($event)"
+    [newGuest]="getNewGuest()"
+    [updateGuest]="updateGuest"
+    ></app-guest-list>
+</div>
+<div class="guest-info-bar">
+    <app-guest-info-bar [guest]="selectedGuest"
+    (infoEventEmitter)="setSection($event)"
+    ></app-guest-info-bar>
+</div>
+<div class="new-guest"*ngIf="section == sectionList.NEW_GUEST">
+    <app-new-guest [sectionTitle]="'Novo Hospede'"
+    (closeEventEmitter)="setSection($event)"
+    (newGuestEventEmitter)="addNewGuest($event)"
+    ></app-new-guest>
+</div>
+<div class="info-guest" *ngIf="section == sectionList.INFORMATION">
+    <app-info-guest [guest]="selectedGuest"
+    (closeEventEmitter)="setSection($event)"
+    (editEventEmitter)="setSection($event)"
+    ></app-info-guest>
+</div>
+<div class="edit-guest" *ngIf="section == sectionList.EDIT_GUEST">
+    <app-new-guest [sectionTitle]="'Editar Hospede'"
+    [editGuest]="selectedGuest"
+    (closeEventEmitter)="setSection($event)"
+    (updateGuestEventEmitter)="updateGuestData($event)"
+    ></app-new-guest>
+</div>

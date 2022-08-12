@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="header">
+        <section class="section-title">
+            <img src="/assets/icons/reservas.png">
+            <h3 [innerText]="sectionName"></h3>
+        </section>
+        <button class="close" (click)="closeWindow()" [innerText]="'X'"></button>
+    </div>
+    <div class="form">
+        <div class="inputs">
+            <aside class="side-input"> <!-- Input Lateral -->
+                <div class="input-image" id="selectRoom">
+                    <img *ngIf="selectedRoom == undefined" [src]="'https://checkoutrh.com.br/wp-content/uploads/2021/09/placeholder.png'">
+                    <img *ngIf="selectedRoom" [src]="selectedRoom.urlImage">
+                    <div class="description">
+                        <h3 [innerText]="showRoom()"></h3>
+                    </div>
+                </div>
+                <div class="input-image" id="selectGuest">
+                    <img [src]="'https://www.seekpng.com/png/detail/966-9665317_placeholder-image-person-jpg.png'">
+                    <div class="description">
+                        <h3 [innerText]="showGuest()"></h3>
+                    </div>
+                    
+                </div>
+                
+            </aside>
+            <div class="fields">
+                <div class="double-input">
+                    <div class="input">
+                        <label for="inicioReserva">Início da Reserva</label>
+                        <input type="date" [formControl]="initReserve">
+                    </div>
+                    <div class="input">
+                        <label for="fimReserva">Fim da Reserva</label>
+                        <input type="date" [formControl]="endReserve">
+                    </div>
+                </div>
+                <div class="double-input">
+                    <div class="input">
+                        <label for="qtdePessoas">Qtde. Pessoas</label>
+                        <input type="number" [formControl]="nPeoples">
+                    </div>
+                    <div class="input" *ngIf="false">
+                        <label for="formaPagamento">Forma de Pagamento</label>
+                        <input type="text">
+                    </div>
+                </div>
+                <div class="text-area">
+                    <label for="observacoes">Observações</label>
+                    <textarea name="observacoes" id="obs-input" cols="20" rows="10" (resize)="'none'" [formControl]="observation"></textarea>
+                </div>
+            </div>
+        </div>
+        <span [innerText]=""></span>
+        <button [innerText]="sectionName" class="btn-confirm" (click)="sendPost()"></button>
+    </div>
+</div>
+<div id="minimalGuestList" class="hidden">
+    <app-minimal-guest-list (closeEmitter)="closeMinimalList('minimalGuestList')"
+    (guestEmitter)="setGuest($event)"></app-minimal-guest-list>
+</div>
+<div id="minimalRoomList" class="hidden">
+    <app-minimal-room-list (closeEmitter)="closeMinimalList('minimalRoomList')"
+    (roomEmitter)="setRoom($event)"></app-minimal-room-list>
+</div>    

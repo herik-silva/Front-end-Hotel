@@ -1,0 +1,16 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Tel. Contato</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let guestRow of guestRowList; index as i" (click)="selectGuest(i)" [ngClass]="guestRow.row.class">
+            <td [innerText]="guestRow.guest.getName()"></td>
+            <td [innerText]="guestRow.guest.getCpf()"></td>
+            <td [innerText]="guestRow.guest.getContactPhone()[0]"></td>
+        </tr>
+    </tbody>
+</table>

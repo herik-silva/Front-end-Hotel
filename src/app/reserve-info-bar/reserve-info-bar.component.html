@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="guest-data">
+        <img src="assets/icons/reservas.png">
+        <span [innerText]="getReserveInformation()"></span>
+    </div>
+    <app-button [buttonName]="'Informações'" [imagePath]="'assets/icons/icon_info.png'" [selectedClass]="'button btn-gray rounded'" (click)="showInformations()"></app-button>
+</div>

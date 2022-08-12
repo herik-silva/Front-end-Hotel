@@ -1,0 +1,10 @@
+<header-app></header-app>
+<div class="status anime-opacity" *ngIf="errorMessage">
+        <div class="msg">
+                <p [innerText]="errorMessage"></p>
+        </div>
+        <div class="load-bar anime-load-bar error"></div>
+</div>
+<div class="container">
+        <app-login-form (userEmitter)="saveUser($event)" (errMessageEmitter)="showErrorMessage($event)"></app-login-form>
+</div>

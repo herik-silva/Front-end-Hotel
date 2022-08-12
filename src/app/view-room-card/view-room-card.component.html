@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="header">
+        <div class="buttons">
+            <app-button [imagePath]="'assets/icons/reservas.png'" [selectedClass]="'button btn-gray border-right-gray'" [buttonName]="'Reservar'"></app-button>
+            <app-button [imagePath]="'assets/icons/quartos.png'" [selectedClass]="'button btn-gray border-right-gray'" [buttonName]="'Editar'" (click)="edit()"></app-button>
+        </div>
+        <button class="close" (click)="close()">X</button>
+    </div>
+    <div class="image">
+        <img *ngIf="!room?.imgBase64?.includes('null')" [src]="room?.imgBase64">
+        <div *ngIf="room?.imgBase64?.includes('null')" class="no-image">
+            <h2 [innerText]="'Sem Foto'"></h2>
+        </div>
+    </div>
+    <div class="information">
+        <div class="room">
+            <div class="box">
+                <h2 [innerText]="'Quarto '+ room?.number"></h2>
+                <span [innerText]="room?.status" [ngClass]="statusClass"></span>
+            </div>
+        </div>
+        <div class="accommodation">
+            <div class="box">
+                <h4 [innerText]="'Tipo de acomodação'"></h4>
+                <h3 [innerText]="accommodation?.description" [title]="'Capacidade Máxima: 2 pessoas'"></h3>
+            </div>
+        </div>
+        <div class="diaryPrice">
+            <div class="box">
+                <h4 [innerText]="'Preço da diária'"></h4>
+                <h3 [innerText]="getFormatedPrice()"></h3>
+            </div>
+        </div>
+    </div>
+</div>

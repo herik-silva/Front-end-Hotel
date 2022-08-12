@@ -1,0 +1,16 @@
+
+.container-menu {
+    text-align: center;
+    width: var(--menu-width);
+    min-height: 100vh;
+    background-color: #404040;
+    color: #FFF;
+}
+
+.header {
+    margin: 20px 0 26px 0;
+}
+
+.button {
+    margin-bottom: 26px;
+}

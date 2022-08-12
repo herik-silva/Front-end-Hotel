@@ -1,0 +1,12 @@
+<aside class="container-menu">
+    <header-app class="title"></header-app>
+    <div class="header">
+        <h2>Menu Principal</h2>
+        <span [innerText]="getLoggedUsername()"></span>
+    </div>
+    <div class="buttons" *ngFor="let button of buttonList; index as i">
+        <div class="button">
+            <app-button [buttonName]="button.text" [imagePath]="button.imagePath" [selectedClass]="button.class" (click)="click(i)"></app-button>
+        </div>
+    </div>
+</aside>

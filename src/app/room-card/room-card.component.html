@@ -1,0 +1,22 @@
+<div class="card-container">
+    <div [ngClass]="selectedClass">
+        <h2>{{ cardTitle }}</h2>
+        <div [ngClass]="btnRemoveClass" (click)="removeCard()">X</div>
+    </div>
+
+    <div class="data-card">
+        <div class="guest-name">
+            <img src="../../assets/icons/people.png" alt="" class="icon">
+            <p>{{ guestName }} </p>
+        </div>
+        <div class="guest-reserve">
+            <img src="../../assets/icons/calendario.png" alt="" class="icon">
+            <p>{{ reserveDate }} </p>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button [innerText]="'Informações'" class="btn-white" (click)="getCardId()"></button>
+        <button [innerText]="'Reservar'" *ngIf="status == 'Livre'" class="btn-white" (click)="reserve()"></button>
+    </div>
+</div>

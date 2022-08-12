@@ -1,0 +1,47 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 320px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+input {
+    min-width: 300px;
+    height: 35px;
+
+    border-radius: 10px;
+    border: 1px solid var(--bg_primary);
+
+    text-align: center;
+}
+
+label {
+    color: var(--bg_primary);
+}
+
+button {
+    min-width: 150px;
+    height: 35px;
+
+    background-color: var(--bg_primary);
+    color: var(--bg_secundary);
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: ease-in .1s all;
+}
+
+button:hover {
+    filter: brightness(150%);
+}

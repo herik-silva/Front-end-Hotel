@@ -1,0 +1,21 @@
+<div class="container">
+    <header>
+        <div class="section-title">
+            <img src="assets/icons/quartos.png">
+            <h3 [innerText]="sectionTitle"></h3>
+        </div>
+        <button class="close" (click)="close()">X</button>
+    </header>
+    <div class="inputs">
+        <span>Acomodações são classificações para cada tipo de quartos.</span>
+        <div class="input">
+            <label for="Descrição">Categoria</label>
+            <input type="text" [formControl]="description" [placeholder]="'Descreva a acomodação'">
+        </div>
+        <div class="input">
+            <label for="Descrição">Preço da Diária</label>
+            <input type="number" [formControl]="diaryPrice" [min]="1" [placeholder]="'Ex: 90'">
+        </div>
+        <button [innerText]="sectionTitle" class="btn-confirm" (click)="confirm()"></button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="form" action="none">
+    <div class="input-group">
+        <label for="username">Usuário</label>
+        <input type="text" name="username" placeholder="Nome de usuário" [formControl]="userName" autocomplete="none">
+    </div>
+
+    <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" name="password" [formControl]="password">
+    </div>
+    
+    <button (click)="sendPost()">Login</button>
+</div>

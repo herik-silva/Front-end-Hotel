@@ -1,0 +1,28 @@
+<div class="header">
+    <div class="buttons">
+        <div class="button">
+            <app-button [buttonName]="'Nova Reserva'" [imagePath]="'assets/icons/add.png'" [selectedClass]="'button w-auto rounded btn-gray'" (click)="setSection(sectionList.NEW_RESERVE)"></app-button>
+        </div>
+    </div>
+    <div class="input-search">
+        <input type="text" [formControl]="filter">
+        <button><img src="/assets/icons/icon_search.png"></button>
+    </div>
+</div>
+<div class="reserve-list">
+    <app-reserve-list [filter]="filter.value"
+    (reserveEmitter)="setReserve($event)"
+    (showInfoEmitter)="setSection($event)"></app-reserve-list>
+</div>
+<div class="reserve-info-bar">
+    <app-reserve-info-bar [reserve]="selectedReserve" (showInfoEmitter)="setSection($event)"></app-reserve-info-bar>
+</div>
+<div class="new-reserve" *ngIf="selectedSection == sectionList.NEW_RESERVE || this.pileSection.checkIsOpen(sectionList.NEW_RESERVE)">
+    <app-new-reserve [sectionName]="'Nova Reserva'" (editEmitter)="setSection($event)" (closeEmitter)="closeSection($event)"></app-new-reserve>
+</div>
+<div class="new-reserve" *ngIf="selectedSection == sectionList.EDIT_RESERVE">
+    <app-new-reserve [sectionName]="'Editar Reserva'" (closeEmitter)="closeSection($event)"></app-new-reserve>
+</div>
+<div class="new-reserve" *ngIf="selectedSection == sectionList.INFORMATION">
+    <app-reserve-info [iconPath]="'/assets/icons/reservas.png'" (closeEmitter)="closeSection($event)" [selectedReserve]="selectedReserve"></app-reserve-info>
+</div>

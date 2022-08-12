@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="guest-data">
+        <img src="assets/icons/hospede.png">
+        <span [innerText]="guest.getName()"></span>
+    </div>
+    <app-button (click)="showInfo()" [buttonName]="'Informações'" [imagePath]="'assets/icons/icon_info.png'" [selectedClass]="'button btn-gray rounded'"></app-button>
+</div>

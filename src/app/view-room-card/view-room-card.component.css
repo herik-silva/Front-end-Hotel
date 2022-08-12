@@ -1,0 +1,101 @@
+.container {
+    max-width: 550px;
+    min-height: 450px;
+
+    background-color: #FFF;
+}
+
+.image img, .no-image {
+    min-width: 550px;
+    height: 350px;
+}
+
+.no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(0, 0, 0, 0.5)
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #FFF;
+}
+
+.information {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 15px;
+    
+    background-color: var(--bg_primary);
+    color: #FFF;
+}
+
+.room, .accommodation, .diaryPrice {
+    width: calc(100% / 3);
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.room, .accommodation {
+    border-right: 2px solid #FFF;
+}
+
+.accommodation {
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.status {
+    border: none;
+    border-radius: 10px;
+    width: 50%;
+    height: 20px;
+    text-align: center;
+}
+
+.free {
+    background-color: var(--bg_livre);
+}
+
+.occupied {
+    background-color: var(--bg_ocupado);
+}
+
+.header {
+    background-color: var(--bg_primary);
+    display: flex;
+    justify-content: space-between;
+
+    height: calc(var(--header-size)/1.5);
+}
+
+.buttons {
+    display: flex;
+}
+
+.close {
+    background-color: var(--bg_ocupado);
+    color: #FFF;
+    font-weight: 600;
+
+    height: 100%;
+    width: calc(var(--header-size)/1.5);
+
+    border: none;
+}

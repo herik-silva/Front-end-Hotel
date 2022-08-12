@@ -1,0 +1,21 @@
+<div class="container">
+    <header>
+        <div class="title-list">
+            <h3>Lista de Hospedes</h3>
+        </div>
+        <button class="close" (click)="close()">X</button>
+    </header>
+    <div class="input">
+        <input type="text" class="b-rounded-5" [placeholder]="placeholder" [formControl]="inputValue" (keydown)="filter($event)">
+        <div class="filters">
+            <button id="name" class="option b-rounded-5" (click)="setFilterType('name')">Nome</button>
+            <button id="CPF" class="option b-rounded-5" (click)="setFilterType('CPF')">CPF</button>
+        </div>
+    </div>
+    <div class="list">
+        <div *ngFor="let guest of minimalGuestListView; index as i" (click)="select(i)" (dblclick)="emitGuest()" [ngClass]="guest.className">
+            <span [innerText]="guest.name + ' - ' + guest.CPF"></span>
+        </div>
+    </div>
+    <button class="confirm" (click)="emitGuest()">Selecionar</button>
+</div>

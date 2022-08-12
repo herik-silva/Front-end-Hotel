@@ -1,0 +1,47 @@
+.button {
+    /*Apenas para melhor visualização*/
+    width: 100%;
+
+    min-height: 40px;
+    color: #FFF;
+
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    padding-right: 10px;
+}
+
+img {
+    height: 25px;
+    margin-left: 15px;
+}
+
+h4 {
+    margin-left: 14px
+}
+
+.selected {
+    background-color: #303030;
+}
+
+.btn-gray {
+    background-color: #535353;
+}
+
+.btn-gray:hover{
+    background-color: #434343;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.w-180px {
+    width: 180px;
+}
+
+.border-right-gray {
+    border-right: 2px solid #434343;
+}

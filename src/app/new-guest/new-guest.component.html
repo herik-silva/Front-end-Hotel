@@ -1,0 +1,51 @@
+<div class="container">
+    <header>
+        <div class="section-title">
+            <img src="assets/icons/hospede.png">
+            <h3 [innerText]="sectionTitle"></h3>
+        </div>
+        <div class="close" (click)="close()">
+            <h3>X</h3>
+        </div>
+    </header>
+    <div class="inputs">
+        <div class="image" (click)="openChooseFile()">
+            <h3 *ngIf="sourceImage.length == 0">Sem Foto</h3>
+            <img [src]="sourceImage" *ngIf="sourceImage.length > 0">
+            <input type="file" id="imgSelect" hidden [formControl]="image" (change)="onChange($event)">
+        </div>
+        <div class="input-field">
+            <div class="input">
+                <label>Nome</label>
+                <input type="text" [formControl]="name">
+            </div>
+        </div>
+        <div class="input-field-double">
+            <div class="input">
+                <label>CPF</label>
+                <input type="text" [formControl]="CPF">
+            </div>
+            <div class="input">
+                <label>Tel. Contato</label>
+                <input type="text" [formControl]="contactPhone">
+            </div>
+        </div>
+        <div class="input-field-select">
+            <div class="input">
+                <label>Empresa</label>
+                <select [formControl]="companyId">
+                    <option *ngFor="let company of companies" [value]="company.id" [innerText]="company.name"></option>
+                </select>
+            </div>
+            <button>+</button>
+        </div>
+        <div class="input-field">
+            <div class="input">
+                <label>Cidade</label>
+                <input type="text" [formControl]="city">
+            </div>
+        </div>
+
+        <button class="btn-register" [innerText]="sectionTitle" (click)="confirm()"></button>
+    </div>
+</div>

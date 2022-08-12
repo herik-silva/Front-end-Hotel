@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="header">
+        <section>
+            <img [src]="iconPath">
+            <h3 [innerText]="sectionName"></h3>
+        </section>
+        <div class="close" (click)="closeWindow()">
+            <h3>X</h3>
+        </div>
+    </div>
+    <div class="form">
+        <div class="input-image" (click)="chooseFile()">
+            <h3 *ngIf="sourceImage.length == 0" [innerText]="imagePlaceHolder"></h3>
+            <img *ngIf="sourceImage.length > 0" [src]="sourceImage">
+            <input type="file" class="hidden" id="sendImage" (change)="onChange($event)">
+        </div>
+        <div class="inputs">
+            <div class="input">
+                <label for="roomNumber">N° do Quarto</label>
+                <input type="number" name="roomNumber" [formControl]="number" min="1" placeholder="1">
+            </div>
+            <div class="input">
+                <label for="accommodationId">Acomodação</label>
+                <select name="accommodationId" [formControl]="accommodationId" *ngIf="accommodationList.length > 0">
+                    <option *ngFor="let accommodation of accommodationList" 
+                    value="{{accommodation.id}}" [innerText]="accommodation.description"></option>
+                </select>
+            </div>
+        </div>
+        <span [innerText]="alert"></span>
+        <button (click)="getData()" [innerText]="sectionName" class="btn-confirm"></button>
+    </div>
+</div>

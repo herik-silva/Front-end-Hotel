@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
+
+    transition: ease-in .2s all;
+}
+
+:root {
+    --bg_primary: #303030;
+    --bg_secundary: #F2F2F2;
+    --bg_livre: #63C861;
+    --bg_ocupado: #c86161;
+    --btn_close: #C86161;
+
+    --header-size: 60px;
+    --menu-width: 240px;
+
+    --roomCard-min-height: 60px;
+}
+
+.btn-white {
+    background-color: var(--bg_secundary);
+    
+    border: 1px solid var(--bg_primary);
+    border-radius: 10px;
+
+    min-width: 100px;
+    min-height: 25px;
+
+    font-size: 14px;
+}
+
+.btn-confirm {
+    background-color: var(--bg_primary);
+    color: #FFF;
+    border: none;
+    border-radius: 10px;
+
+    width: 160px;
+    height: 30px;
+
+    margin-bottom: 20px;
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(115%);
+}
+
+/* Color Theme Swatches in Hex */
+.Tema-de-Color-3-1-hex { color: #303030; }
+.Tema-de-Color-3-2-hex { color: #404040; }
+.Tema-de-Color-3-3-hex { color: #737373; }
+.Tema-de-Color-3-4-hex { color: #F2F2F2; }
+.Tema-de-Color-3-5-hex { color: #BFBFBF; }

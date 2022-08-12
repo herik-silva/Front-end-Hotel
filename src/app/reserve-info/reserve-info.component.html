@@ -1,0 +1,59 @@
+<div class="container">
+    <header>
+        <div class="section-title">
+            <img [src]="iconPath">
+            <h3 [innerText]="'Informações'"></h3>
+        </div>
+        <button class="close" [innerText]="'X'" (click)="close()"></button>
+    </header>
+    <section>
+        <aside class="entities">
+            <div class="room">
+                <img [src]="prepareImage(selectedReserve?.roomPhoto)">
+                <h3 id="room-information" [innerText]="'Quarto ' + selectedReserve?.roomNumber"></h3>
+            </div>
+            <div class="guest">
+                <img [src]="prepareImage(selectedReserve?.guestPhoto)">
+                <h3 id="guest-information" [innerText]="selectedReserve?.guestName"></h3>
+            </div>
+        </aside>
+        <div class="text-information">
+            <div class="row">
+                <div class="field">
+                    <label>Início da Reserva</label>
+                    <span [innerText]="prepareDate(selectedReserve?.entryDate)"></span>
+                </div>
+                <div class="field">
+                    <label>Fim da Reserva</label>
+                    <span [innerText]="prepareDate(selectedReserve?.checkOut)"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label>Check-ins Feitos</label>
+                    <span [innerText]="prepareValue(selectedReserve?.checkInAmount)"></span>
+                </div>
+                <div class="field">
+                    <label>Último Check-in</label>
+                    <span [innerText]="prepareValue(selectedReserve?.checkIn)"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label>Pessoas Hospedadas</label>
+                    <span [innerText]="selectedReserve?.amountPeople"></span>
+                </div>
+                <div class="field">
+                    <label>Tel. Contato do Hospede</label>
+                    <span [innerText]="'37 99959-5964'"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label>Observações</label>
+                    <textarea disabled cols="30" rows="10" [value]="selectedReserve?.observation"></textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
