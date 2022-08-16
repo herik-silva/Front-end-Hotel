@@ -14,12 +14,14 @@ export class ReserveViewComponent implements OnInit {
   selectedReserve?: ReserveView;
   selectedSection: SectionReserve;
   pileSection: PileSection<SectionReserve>;
+  newReserve?: ReserveView;
   sectionList = {
     RESERVE_LIST: "RESERVE_LIST" as SectionReserve,
     NEW_RESERVE: "NEW_RESERVE" as SectionReserve,
     INFORMATION: "INFORMATION" as SectionReserve,
     REMOVE_RESERVE: "REMOVE_RESERVE" as SectionReserve,
-    EDIT_RESERVE: "EDIT_RESERVE" as SectionReserve
+    EDIT_RESERVE: "EDIT_RESERVE" as SectionReserve,
+    ALERT: "ALERT" as SectionReserve
   }
 
   constructor() {
@@ -43,5 +45,13 @@ export class ReserveViewComponent implements OnInit {
 
   closeSection(section: SectionReserve): void {
     this.selectedSection = this.pileSection.nextSection();
+  }
+
+  setNewReserve(newReserve: ReserveView): void {
+    this.newReserve = newReserve;
+  }
+
+  sayHello(): void {
+    alert("Hello");
   }
 }

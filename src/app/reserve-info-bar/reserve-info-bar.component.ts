@@ -11,9 +11,11 @@ export class ReserveInfoBarComponent implements OnInit {
   @Input() reserve?: ReserveView;
 
   @Output() showInfoEmitter: EventEmitter<SectionReserve>;
+  @Output() checkinEmitter: EventEmitter<SectionReserve>;
 
   constructor() {
     this.showInfoEmitter = new EventEmitter();
+    this.checkinEmitter = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -23,7 +25,7 @@ export class ReserveInfoBarComponent implements OnInit {
     var message = "Sem informações";
     
     if(this.reserve){
-      message = `${this.reserve.roomNumber} - ${this.reserve.guestName}`;
+      message = `${this.reserve.roomNumber} - ${this.reserve.guestName} - Telefone de Contato: ${this.reserve.celPhone}`;
     }
 
     return message;
@@ -32,5 +34,11 @@ export class ReserveInfoBarComponent implements OnInit {
   showInformations(): void {
     if(this.reserve)
       this.showInfoEmitter.emit("INFORMATION");
+  }
+
+  emitCheckin(): void {
+    console.log(this.reserve);
+    if(this.reserve)
+      this.checkinEmitter.emit("ALERT");
   }
 }

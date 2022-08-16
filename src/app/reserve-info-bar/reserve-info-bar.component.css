@@ -6,16 +6,23 @@
     background-color: var(--bg_primary);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
+
+    padding: 0 10px;
 }
 
 .guest-data {
     display: flex;
     align-items: center;
 
-    min-width: calc(100% - 200px);
-    
     color: #FFF;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 300px;
 }
 
 .guest-data img {

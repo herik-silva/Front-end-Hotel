@@ -51,6 +51,19 @@ button:hover {
     filter: brightness(115%);
 }
 
+.close {
+    background-color: var(--bg_ocupado);
+    color: #FFF;
+    font-weight: 600;
+
+    height: 100%;
+    width: calc(var(--header-size)/1.5);
+
+    border: none;
+    border-radius: 0 10px 0 0;
+}
+
+
 /* Color Theme Swatches in Hex */
 .Tema-de-Color-3-1-hex { color: #303030; }
 .Tema-de-Color-3-2-hex { color: #404040; }

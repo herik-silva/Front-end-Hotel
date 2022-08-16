@@ -25,6 +25,11 @@ tbody td {
 tbody tr {
     border-bottom: 2px solid var(--bg_primary);
     height: 25px;
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color:rgb(238, 238, 238);
 }
 
 tbody tr:last-child {

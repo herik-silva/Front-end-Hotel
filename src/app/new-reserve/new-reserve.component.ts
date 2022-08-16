@@ -6,6 +6,7 @@ import MinimalGuest from 'src/Entity/MinimalGuest';
 import { FormControl } from '@angular/forms';
 import ValidateInputs from 'src/Entity/ValidateInputs';
 import Reserve from 'src/Entity/Reserve';
+import ReserveView from 'src/Entity/ReserveView';
 
 @Component({
   selector: 'app-new-reserve',
@@ -17,21 +18,23 @@ export class NewReserveComponent implements OnInit {
   @Input() sectionName: string;
   @Output() closeEmitter: EventEmitter<SectionReserve>;
   @Output() editEmitter: EventEmitter<SectionReserve>;
+  @Output() newReserveEmitter: EventEmitter<ReserveView>;
   selectedRoom?: MinimalRoomData;
   selectedGuest?: MinimalGuest;
   minimalList?: string;
   initReserve: FormControl<Date>
   endReserve: FormControl<Date>
-  nPeoples: FormControl<number>
+  amountPeople: FormControl<number>
   observation: FormControl<string>
 
   constructor(private http: HttpClient) {
     this.sectionName = "";
     this.closeEmitter = new EventEmitter();
     this.editEmitter = new EventEmitter();
+    this.newReserveEmitter = new EventEmitter();
     this.initReserve = new FormControl();
     this.endReserve = new FormControl();
-    this.nPeoples = new FormControl();
+    this.amountPeople = new FormControl();
     this.observation = new FormControl();
   }
 
@@ -114,11 +117,11 @@ export class NewReserveComponent implements OnInit {
     const input = new ValidateInputs([
       { field: this.initReserve, validateWith: 'LARGER', compareTo: 7 },
       { field: this.endReserve, validateWith: 'LARGER', compareTo: 7 },
-      { field: this.nPeoples, validateWith: 'LARGER', compareTo: 0 }
+      { field: this.amountPeople, validateWith: 'LARGER', compareTo: 0 }
     ]);
 
     if(input.validate() && this.selectedGuest && this.selectedRoom){
-      return new Reserve(this.initReserve.value, this.endReserve.value, this.nPeoples.value, this.selectedRoom.id,
+      return new Reserve(this.initReserve.value, this.endReserve.value, this.amountPeople.value, this.selectedRoom.id,
         this.selectedGuest.id, 1, "Em espera", 0);
     }
   }
@@ -131,7 +134,7 @@ export class NewReserveComponent implements OnInit {
       const reserveData = [
         {key: "entryDate", value: this.initReserve.value.toString()},
         {key: "checkoutDate", value: this.endReserve.value.toString()},
-        {key: "amountPeople", value: this.nPeoples.value.toString()},
+        {key: "amountPeople", value: this.amountPeople.value.toString()},
         {key: "roomId", value: this.selectedRoom.number.toString()},
         {key: "guestId", value: this.selectedGuest.id.toString()},
         {key: "observation", value: this.observation.value},
@@ -142,14 +145,25 @@ export class NewReserveComponent implements OnInit {
       ];
 
       for(let data of reserveData){
+        console.log(`Adicionando ${data.key}: ${data.value}`);
         formData.append(data.key, data.value);
       }
 
-      const obsRequest = this.http.post(url, formData);
+      const obsRequest = this.http.post<{id: number}>(url, formData);
 
       obsRequest.subscribe({
         next: data => {
-          alert(data.toString());
+          const url = `api/reserve/${data.id}`;
+          const obsRequestGet = this.http.get<ReserveView>(url);
+
+          obsRequestGet.subscribe({
+            next: reserve => {
+              if(reserve)
+                this.newReserveEmitter.emit(reserve);
+
+              this.closeWindow();
+            }
+          });
         }
       })
     }

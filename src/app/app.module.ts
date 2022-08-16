@@ -27,6 +27,7 @@ import { ReserveInfoBarComponent } from './reserve-info-bar/reserve-info-bar.com
 import { NewReserveComponent } from './new-reserve/new-reserve.component';
 import { MinimalRoomListComponent } from './minimal-room-list/minimal-room-list.component';
 import { MinimalGuestListComponent } from './minimal-guest-list/minimal-guest-list.component';
+import { AlertPopUpComponent } from './alert-pop-up/alert-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MinimalGuestListComponent } from './minimal-guest-list/minimal-guest-li
     ReserveInfoBarComponent,
     NewReserveComponent,
     MinimalRoomListComponent,
-    MinimalGuestListComponent
+    MinimalGuestListComponent,
+    AlertPopUpComponent
   ],
   imports: [
     BrowserModule,

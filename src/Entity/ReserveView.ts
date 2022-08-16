@@ -13,6 +13,7 @@ interface ReserveView {
     employeeId: number;
     employeeName: string;
     observation: string;
+    celPhone: string;
 }
 
 export default ReserveView;

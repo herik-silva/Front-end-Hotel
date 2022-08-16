@@ -3,5 +3,8 @@
         <img src="assets/icons/reservas.png">
         <span [innerText]="getReserveInformation()"></span>
     </div>
-    <app-button [buttonName]="'Informações'" [imagePath]="'assets/icons/icon_info.png'" [selectedClass]="'button btn-gray rounded'" (click)="showInformations()"></app-button>
+    <div class="buttons">
+        <app-button [buttonName]="'Check-in'" [imagePath]="'assets/icons/checkin.png'" [selectedClass]="'button btn-gray rounded'" (click)="emitCheckin()"></app-button>
+        <app-button [buttonName]="'Informações'" [imagePath]="'assets/icons/icon_info.png'" [selectedClass]="'button btn-gray rounded'" (click)="showInformations()"></app-button>
+    </div>
 </div>

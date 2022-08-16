@@ -1,0 +1,16 @@
+<div class="container">
+    <header>
+        <div class="section-title">
+            <img src="assets/icons/icon_alert.png">
+            <h3 [innerText]="title"></h3>
+        </div>
+        <button class="close" (click)="closeWindow()">X</button>
+    </header>
+    <article>
+        <span [innerText]="message"></span>
+    </article>
+    <div class="buttons">
+        <button [innerText]="btnText" (click)="confirm()"></button>
+        <button *ngIf="confirmAlert" (click)="closeWindow()">Cancelar</button>
+    </div>
+</div>

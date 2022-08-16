@@ -10,19 +10,24 @@
     </div>
 </div>
 <div class="reserve-list">
-    <app-reserve-list [filter]="filter.value"
+    <app-reserve-list [filter]="filter.value" [newReserve]="newReserve"
     (reserveEmitter)="setReserve($event)"
-    (showInfoEmitter)="setSection($event)"></app-reserve-list>
+    (showInfoEmitter)="setSection($event)"
+    (checkinEmitter)="setSection($event)"></app-reserve-list>
 </div>
 <div class="reserve-info-bar">
-    <app-reserve-info-bar [reserve]="selectedReserve" (showInfoEmitter)="setSection($event)"></app-reserve-info-bar>
+    <app-reserve-info-bar [reserve]="selectedReserve" (showInfoEmitter)="setSection($event)" (checkinEmitter)="setSection($event)"></app-reserve-info-bar>
 </div>
 <div class="new-reserve" *ngIf="selectedSection == sectionList.NEW_RESERVE || this.pileSection.checkIsOpen(sectionList.NEW_RESERVE)">
-    <app-new-reserve [sectionName]="'Nova Reserva'" (editEmitter)="setSection($event)" (closeEmitter)="closeSection($event)"></app-new-reserve>
+    <app-new-reserve [sectionName]="'Nova Reserva'" (editEmitter)="setSection($event)" (closeEmitter)="closeSection($event)" (newReserveEmitter)="setNewReserve($event)"></app-new-reserve>
 </div>
 <div class="new-reserve" *ngIf="selectedSection == sectionList.EDIT_RESERVE">
     <app-new-reserve [sectionName]="'Editar Reserva'" (closeEmitter)="closeSection($event)"></app-new-reserve>
 </div>
 <div class="new-reserve" *ngIf="selectedSection == sectionList.INFORMATION">
     <app-reserve-info [iconPath]="'/assets/icons/reservas.png'" (closeEmitter)="closeSection($event)" [selectedReserve]="selectedReserve"></app-reserve-info>
+</div>
+
+<div class="new-reserve" *ngIf="selectedSection == sectionList.ALERT">
+    <app-alert-pop-up [btnText]="'Confirmar'" [confirmAlert]="true" [message]="selectedReserve?.guestName + ' - Quarto ' + selectedReserve?.roomNumber + ' deseja realizar check-in?'" [callback]="sayHello" (closeEmitter)="closeSection($event)"></app-alert-pop-up>
 </div>
