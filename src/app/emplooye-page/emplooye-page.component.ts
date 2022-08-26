@@ -48,7 +48,7 @@ export class EmplooyePageComponent implements OnInit {
     return this.loggedUser ? this.loggedUser.name : "";
   }
 
-  getResponsabilityId(): number {
-    return this.loggedUser ? this.loggedUser.responsabilityId : 0;
+  getAcessLevel(): number {
+    return this.loggedUser ? this.loggedUser.acessLevel : 0;
   }
 }

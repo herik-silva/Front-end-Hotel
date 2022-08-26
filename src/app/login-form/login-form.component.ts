@@ -71,6 +71,7 @@ export class LoginFormComponent implements OnInit {
 
       obsRequest.subscribe({
         next: data => {
+          console.log(data);
           this.emitUser(data);
         },
         error: data => {

@@ -19,7 +19,7 @@ export class RoomViewComponent implements OnInit {
   roomList: Array<RoomCard>;
   accommodationList: Array<Accommodation>;
 
-  @Input() responsabilityId: number;
+  @Input() acessLevel: number;
 
   selectedRoom: Room | undefined;
   selectedFilter: string;
@@ -40,7 +40,7 @@ export class RoomViewComponent implements OnInit {
       EDIT_ROOM: 4,
       NEW_ACCOMMODATION: 5
     }
-    this.responsabilityId = 0;
+    this.acessLevel = 0;
     this.selectedSection = this.sectionList.ROOM_LIST;
   }
   
@@ -50,7 +50,7 @@ export class RoomViewComponent implements OnInit {
   }
 
   checkAcessLevel(): boolean {
-    if(this.responsabilityId<2){ // Abaixo de 2 sem acesso para criação de quartos
+    if(this.acessLevel<2){ // Abaixo de 2 sem acesso para criação de quartos
       return false;
     }
 
@@ -73,6 +73,9 @@ export class RoomViewComponent implements OnInit {
     })
   }
 
+  /**
+   * Busca informação dos quartos no servidor.
+   */
   getRooms() {
     const url = `api/room/all`;
     const observableRequest = this.http.get<room | Array<room>>(url);
@@ -164,17 +167,8 @@ export class RoomViewComponent implements OnInit {
   }
 
   removeRoom(index: number) {
-    console.log(this.roomList);
-    console.log(this.roomView);
-
     const roomToRemove = this.roomView[index];
-
-    const indexToRemove = this.roomList.findIndex((room) => room.number == roomToRemove.number);
-    console.log(`Index remove: ${indexToRemove}`);
-    console.log(this.roomList[indexToRemove])
-    this.roomList.splice(indexToRemove, 1);
-    this.roomView = this.roomList;
-  
+    this.sendDelete(roomToRemove.id);
   }
 
   reserveRoom(index: number) {
@@ -183,19 +177,28 @@ export class RoomViewComponent implements OnInit {
 
   addAccommodation(newAccommodation: Accommodation) {
     this.accommodationList.push(newAccommodation);
-    console.log(newAccommodation);
   }
 
   // CONTINUAR DEPOIS DA AUTENTICAÇÃO DO USUÁRIO
-  sendDelete(index: number) {
-    const url = `api/room/${index}`;
+  sendDelete(roomNumber: number) {
+    alert(roomNumber);
+    const url = `api/room/${roomNumber}`;
 
-    this.http.delete(url, {
+    const obsRequest = this.http.delete(url, {
       headers: new HttpHeaders(
         {
           Accept: 'application/json',
+          Authorization: `Basic ${"admin:admin1234"}`
         }
       )
     });
+
+    obsRequest.subscribe({
+      next: data => {
+        const indexToRemove = this.roomList.findIndex((room) => room.number == roomNumber);
+        this.roomList.splice(indexToRemove, 1);
+        this.roomView = this.roomList;
+      }
+    })
   }
 }

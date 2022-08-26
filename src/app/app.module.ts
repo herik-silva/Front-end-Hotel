@@ -28,6 +28,7 @@ import { NewReserveComponent } from './new-reserve/new-reserve.component';
 import { MinimalRoomListComponent } from './minimal-room-list/minimal-room-list.component';
 import { MinimalGuestListComponent } from './minimal-guest-list/minimal-guest-list.component';
 import { AlertPopUpComponent } from './alert-pop-up/alert-pop-up.component';
+import { InfoCheckoutComponent } from './info-checkout/info-checkout.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AlertPopUpComponent } from './alert-pop-up/alert-pop-up.component';
     NewReserveComponent,
     MinimalRoomListComponent,
     MinimalGuestListComponent,
-    AlertPopUpComponent
+    AlertPopUpComponent,
+    InfoCheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,10 @@
 abstract class People {
     protected name: string;
-    protected contactPhone: Array<string>;
+    protected contactPhone: string;
     protected cpf: string;
     protected photo: string | undefined;
     
-    constructor(name: string, cpf: string, contactPhone: Array<string> = [], photo: string | undefined = undefined){
+    constructor(name: string, cpf: string, contactPhone: string = "", photo: string | undefined = undefined){
         this.name = name;
         this.cpf = cpf;
         this.contactPhone = contactPhone;
@@ -15,7 +15,7 @@ abstract class People {
         return this.name;
     }
 
-    public getContactPhone(): Array<string> {
+    public getContactPhone(): string {
         return this.contactPhone;
     }
 
@@ -43,31 +43,7 @@ abstract class People {
     }
 
     public setContactPhone(number: string): void {
-        this.contactPhone[0] = number;
-    }
-
-    public addContactPhone(newNumber: string): boolean {
-        if(this.contactPhone.length<2){
-            this.contactPhone.push(newNumber);
-            return true;
-        }
-
-        return false;
-    }
-
-    public removeContactPhone(numberId: number): void {
-        switch(numberId){
-            case 1:
-                this.contactPhone.shift();
-                break;
-
-            case 2:
-                this.contactPhone.pop();
-                break;
-
-            default:
-                throw "Id inválido!";
-        }
+        this.contactPhone = number;
     }
 }
 

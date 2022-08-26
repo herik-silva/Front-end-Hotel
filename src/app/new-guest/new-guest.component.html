@@ -23,11 +23,11 @@
         <div class="input-field-double">
             <div class="input">
                 <label>CPF</label>
-                <input type="text" [formControl]="CPF">
+                <input type="text" [formControl]="CPF" (blur)="formatCpf()">
             </div>
             <div class="input">
                 <label>Tel. Contato</label>
-                <input type="text" [formControl]="contactPhone">
+                <input type="text" [formControl]="contactPhone" (blur)="formatContactPhone()">
             </div>
         </div>
         <div class="input-field-select">

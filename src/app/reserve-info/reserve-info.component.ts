@@ -19,6 +19,10 @@ export class ReserveInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.group("Observação");
+    console.log(this.selectedReserve?.observation);
+    console.groupEnd();
+
   }
 
   close(): void {
@@ -26,18 +30,22 @@ export class ReserveInfoComponent implements OnInit {
   }
 
   prepareDate(date: Date | undefined): string {
-    console.log(date);
     if(date){
-      return new Date(date.toString()).toLocaleDateString("pt-BR");
+      const formatedDate = new Date(date.toString()).toLocaleDateString("pt-BR");
+      console.log(formatedDate);
+      return formatedDate;
     }
 
     return "-";
   }
 
   prepareValue(value: any): any {
-    if(value)
+    if(value){
+      console.log("Com dado");
       return value;
+    }
 
+    console.log("Sem dado");
     return "-";
   }
 

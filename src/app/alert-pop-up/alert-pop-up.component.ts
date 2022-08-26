@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input, Output, EventEmitter, Injectable } from '@angular/core';
 import { SectionReserve } from 'src/Types/viewsType';
 
 @Component({
@@ -6,17 +7,19 @@ import { SectionReserve } from 'src/Types/viewsType';
   templateUrl: './alert-pop-up.component.html',
   styleUrls: ['./alert-pop-up.component.css']
 })
+@Injectable()
 export class AlertPopUpComponent implements OnInit {
   title: string;
   @Input() confirmAlert: boolean;
   @Input() message?: string;
   @Input() btnText: string;
   @Input() callback?: Function;
+  @Input() data?: any;
 
   @Output() closeEmitter: EventEmitter<SectionReserve>;
   @Output() confirmEmitter: EventEmitter<SectionReserve>;
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.title = "Alerta";
     this.btnText = "Confirmar";
     this.confirmAlert = false;
@@ -41,8 +44,8 @@ export class AlertPopUpComponent implements OnInit {
 
   confirm(): void {
     if(this.callback)
-      this.callback();
+      this.callback(this.data, this.http);
+      this.closeWindow();
 
-    this.closeWindow();
   }
 }

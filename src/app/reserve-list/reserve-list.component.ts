@@ -83,6 +83,7 @@ export class ReserveListComponent implements OnInit {
         if(data instanceof Array<ReserveView>){
           for(let reserveView of data){
             this.reserveList.push({reserve: reserveView, row: {class: ""}});
+            console.log(reserveView);
           }
 
           this.reserveList.sort((a, b) => {
@@ -100,7 +101,7 @@ export class ReserveListComponent implements OnInit {
           this.reserveListView = this.reserveList;
         }
       }
-    })
+    });
   }
 
   showInformations(): void {
@@ -108,7 +109,30 @@ export class ReserveListComponent implements OnInit {
   }
 
   showCheckin(index: number): void {
-    this.select(index);
-    this.checkinEmitter.emit("ALERT");
+    this.select(index); // Seleciona a reserva
+
+    if(this.selectedReserve){
+      if(this.selectedReserve.reserve.lastCheckin){ // Caso já foi feito um checkin, deve verificar se é outro dia.
+        const lastCheckin = new Date(this.selectedReserve.reserve.lastCheckin.toString()).toLocaleDateString("pt-BR");
+        if(lastCheckin != new Date().toLocaleDateString("pt-BR")){
+          this.checkinEmitter.emit("ALERT");
+        }
+        else{
+          alert("Checkin já foi realizado!");
+        }
+      }
+      else{
+        this.checkinEmitter.emit("ALERT");
+      }
+    }
+  }
+
+  prepareDate(date: Date | undefined): string {
+    if(date){
+      const formatedDate = new Date(date.toString()).toLocaleDateString("pt-BR");
+      return formatedDate;
+    }
+
+    return "-";
   }
 }

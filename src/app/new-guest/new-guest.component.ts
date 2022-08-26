@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Injectable, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import Formatter from 'src/Entity/Formatter';
 import Guest from 'src/Entity/Guest';
 import { SectionGuest } from 'src/Types/viewsType';
 
@@ -42,6 +43,7 @@ export class NewGuestComponent implements OnInit {
     this.image = new FormControl();
     this.name = new FormControl();
     this.CPF = new FormControl();
+    this.CPF.registerOnChange(()=>{console.log(this.CPF.value)});
     this.contactPhone = new FormControl();
     this.companyId = new FormControl();
     this.city = new FormControl();
@@ -72,7 +74,7 @@ export class NewGuestComponent implements OnInit {
 
       this.name.setValue(this.editGuest.getName());
       this.CPF.setValue(this.editGuest.getCpf());
-      this.contactPhone.setValue(this.editGuest.getContactPhone()[0]);
+      this.contactPhone.setValue(this.editGuest.getContactPhone());
       this.city.setValue(this.editGuest.getCity());
     }
   }
@@ -82,15 +84,11 @@ export class NewGuestComponent implements OnInit {
     const validateList: Array<Validate> = [
       {
         name: "Nome",
-        isOk: this.name.value.length > 0
-      },
-      {
-        name: "CPF",
-        isOk: this.CPF.value.length == 14 || this.CPF.value.length == 11
+        isOk: this.name.value.replace(" ", "").length > 0
       },
       {
         name: "Tel. Contato",
-        isOk: this.contactPhone.value.length >= 8 && this.contactPhone.value.length <= 16
+        isOk: this.contactPhone.value != null && this.contactPhone.value.length >= 8 && this.contactPhone.value.length <= 16
       }
     ]
 
@@ -102,7 +100,6 @@ export class NewGuestComponent implements OnInit {
     }
 
     if(failed){
-      alert("Os campos a seguir são obrigatórios: \n" + this.message);
     }
     
     return !failed;
@@ -129,15 +126,16 @@ export class NewGuestComponent implements OnInit {
     this.closeEventEmitter.emit("GUEST_LIST");
   }
 
-  newGuest(): void {
+  newGuest(id: number): void {
     if(this.validateInputs()){
       const guest = new Guest(
-        this.name.value, [this.contactPhone.value], 
+        this.name.value, this.contactPhone.value, 
         this.CPF.value, this.city.value, 
-        this.sourceImage, this.companyId.value
+        this.sourceImage, this.companyId.value, id
       );
   
       this.newGuestEventEmitter.emit(guest);
+      this.close();
     }
   }
 
@@ -151,42 +149,78 @@ export class NewGuestComponent implements OnInit {
       this.editGuest.setPhoto(this.sourceImage);
 
       this.updateGuestEventEmitter.emit(this.editGuest);
+      this.close();
     }
   }
 
   confirm(): void {
     if(this.sectionTitle == "Novo Hospede"){
-      this.newGuest();
+      this.sendPost();
     }
     else{
-      this.updateGuest();
+      this.sendPut();
     }
-
-    this.close();
   }
 
-  sendPost(): void {
-    const url = "api/guest";
-    const formData = new FormData();
+  private getGuestData() {
     const guestData = [
       { key: "name", value: this.name.value },
       { key: "cpf", value: this.CPF.value },
       { key: "photo", value: this.sourceImage },
       { key: "contactPhone", value: this.contactPhone.value },
       { key: "city", value: this.city.value },
-      { key: "companyId", value: this.companyId.value.toString() },
+      { key: "companyId", value: this.companyId.value != null ? this.companyId.value.toString() : "0"},
     ];
+
+    return guestData;
+  }
+
+  private prepareFormData(): FormData {
+    const formData = new FormData();
+    const guestData = this.getGuestData();
 
     for(let data of guestData){
       formData.append(data.key, data.value);
     }
 
-    const obsRequest = this.http.post(url, formData);
+    return formData;
+  }
+
+
+  sendPost(): void {
+    const url = "api/guest";
+    const formData = this.prepareFormData();
+
+    const obsRequest = this.http.post<number>(url, formData);
 
     obsRequest.subscribe({
       next: data => {
-        console.log(data);
+        this.newGuest(data);
       }
     })
+  }
+
+  sendPut() {
+    if(this.editGuest){
+      const url = "api/guest";
+      const formData = this.prepareFormData();
+      formData.append("lastAcommodationId", this.editGuest.getLastAccommodationId().toString());
+      formData.append("id", this.editGuest.getId().toString());
+      const obsRequest = this.http.put(url, formData);
+  
+      obsRequest.subscribe({
+        next: data => {
+          this.updateGuest();
+        }
+      });
+    }
+  }
+
+  formatCpf() {
+    this.CPF.setValue(Formatter.formatCPF(this.CPF.getRawValue()));
+  }
+
+  formatContactPhone() {
+    this.contactPhone.setValue(Formatter.formatContactPhone(this.contactPhone.getRawValue()));
   }
 }

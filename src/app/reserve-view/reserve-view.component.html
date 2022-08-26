@@ -29,5 +29,9 @@
 </div>
 
 <div class="new-reserve" *ngIf="selectedSection == sectionList.ALERT">
-    <app-alert-pop-up [btnText]="'Confirmar'" [confirmAlert]="true" [message]="selectedReserve?.guestName + ' - Quarto ' + selectedReserve?.roomNumber + ' deseja realizar check-in?'" [callback]="sayHello" (closeEmitter)="closeSection($event)"></app-alert-pop-up>
+    <app-alert-pop-up [btnText]="'Confirmar'" [callback]="makeCheckin" [data]="selectedReserve" [confirmAlert]="true" [message]="selectedReserve?.guestName + ' - Quarto ' + selectedReserve?.roomNumber + ' deseja realizar check-in?'" (closeEmitter)="closeSection($event)"></app-alert-pop-up>
+</div>
+
+<div class="new-reserve" *ngIf="selectedSection == sectionList.CHECKOUT">
+    <app-alert-pop-up></app-alert-pop-up>
 </div>

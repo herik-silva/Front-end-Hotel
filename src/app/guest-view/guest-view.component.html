@@ -11,6 +11,7 @@
 <div class="guest-list">
     <app-guest-list
     (selectedGuestEmitter)="setSelectedGuest($event)"
+    (showInfoEmitter)="setSection($event)"
     [newGuest]="getNewGuest()"
     [updateGuest]="updateGuest"
     ></app-guest-list>

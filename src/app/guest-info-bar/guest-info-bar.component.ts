@@ -20,7 +20,7 @@ export class GuestInfoBarComponent implements OnInit {
   }
 
   showInfo(): void {
-    if(this.guest.getCpf()){
+    if(this.guest){
       this.infoEventEmitter.emit("INFORMATION");
     }
     else{

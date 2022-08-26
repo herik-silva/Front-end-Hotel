@@ -1,9 +1,9 @@
 interface ReserveView {
     reserveId: number;
     entryDate: Date;
-    checkIn?: Date;
+    lastCheckin?: Date;
     checkOut?: Date;
-    checkInAmount: number;
+    checkinAmount: number;
     amountPeople: number;
     roomNumber: number;
     roomPhoto: string;

@@ -1,8 +1,6 @@
 .card-container {
-    min-width: 250px;
-    min-height: 200px;
-
-    width: 250px;
+    min-width: 240px;
+    min-height: 150px;
 
     border: 1px solid var(--bg_primary);
     border-radius: 10px;
@@ -27,7 +25,7 @@
     display: flex;
     align-items: center;
 
-    margin-top: 26px;
+    margin-top: 15px;
 }
 
 .guest-name img, .guest-reserve img {

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <div class="buttons">
-            <app-button [imagePath]="'assets/icons/reservas.png'" [selectedClass]="'button btn-gray border-right-gray'" [buttonName]="'Reservar'"></app-button>
+            <app-button *ngIf="false" [imagePath]="'assets/icons/reservas.png'" [selectedClass]="'button btn-gray border-right-gray'" [buttonName]="'Reservar'"></app-button>
             <app-button [imagePath]="'assets/icons/quartos.png'" [selectedClass]="'button btn-gray border-right-gray'" [buttonName]="'Editar'" (click)="edit()"></app-button>
         </div>
         <button class="close" (click)="close()">X</button>

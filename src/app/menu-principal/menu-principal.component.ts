@@ -37,11 +37,6 @@ export class MenuPrincipalComponent implements OnInit {
         imagePath: "assets/icons/reservas.png",
         text: "Reservas",
         class: this.classList.default
-      },
-      {
-        imagePath: "assets/icons/recados.png",
-        text: "Recados",
-        class: this.classList.default
       }
     ];
 

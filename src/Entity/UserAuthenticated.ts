@@ -1,8 +1,10 @@
 interface UserAuthenticated {
-    id: number,
+    id: number;
     name: string;
     responsabilityId: number;
     photoUrl: string;
+    acessLevel: number;
+    responsibiltyName: string;
 }
 
 export default UserAuthenticated;

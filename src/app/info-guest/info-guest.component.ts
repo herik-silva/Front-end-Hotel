@@ -20,7 +20,7 @@ export class InfoGuestComponent implements OnInit {
   companies: Array<Company>;
 
   constructor() {
-    this.guest = new Guest("Fulano Alberto", ["37 9954-4412"], "136.664.346-98", "Bambuí");
+    this.guest = new Guest("Fulano Alberto", "37 9954-4412", "136.664.346-98", "Bambuí");
     this.companies = [
       {
         id: 0,

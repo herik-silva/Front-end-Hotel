@@ -31,17 +31,17 @@
             <div class="row">
                 <div class="field">
                     <label>Check-ins Feitos</label>
-                    <span [innerText]="prepareValue(selectedReserve?.checkInAmount)"></span>
+                    <span [innerText]="prepareValue(selectedReserve?.checkinAmount)"></span>
                 </div>
                 <div class="field">
                     <label>Último Check-in</label>
-                    <span [innerText]="prepareValue(selectedReserve?.checkIn)"></span>
+                    <span [innerText]="prepareDate(selectedReserve?.lastCheckin)"></span>
                 </div>
             </div>
             <div class="row">
                 <div class="field">
                     <label>Pessoas Hospedadas</label>
-                    <span [innerText]="selectedReserve?.amountPeople"></span>
+                    <span [innerText]="prepareValue(selectedReserve?.amountPeople)"></span>
                 </div>
                 <div class="field">
                     <label>Tel. Contato do Hospede</label>

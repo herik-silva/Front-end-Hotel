@@ -1,3 +1,3 @@
 export type Section = "NEW_ROOM" | "INFORMATION" | "ROOM_LIST" | "REMOVE_ROOM" | "EDIT_ROOM" | "NEW_ACCOMMODATION";
 export type SectionGuest = "NEW_GUEST" | "INFORMATION" | "GUEST_LIST" | "REMOVE_GUEST" | "EDIT_GUEST";
-export type SectionReserve = "NEW_RESERVE" | "INFORMATION" | "RESERVE_LIST" | "REMOVE_RESERVE" | "EDIT_RESERVE" | "ALERT";
+export type SectionReserve = "NEW_RESERVE" | "INFORMATION" | "RESERVE_LIST" | "REMOVE_RESERVE" | "EDIT_RESERVE" | "ALERT" | "CHECKOUT";

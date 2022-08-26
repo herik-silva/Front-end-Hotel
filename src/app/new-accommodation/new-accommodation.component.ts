@@ -61,7 +61,6 @@ export class NewAccommodationComponent implements OnInit {
       next: data => {
         const id = data.lastId as number;
         this.registerAccommodation(id);
-        alert("EVENTO ACIONADO!");
       }
     })
   }

@@ -43,6 +43,7 @@ export class GuestViewComponent implements OnInit {
 
   setSelectedGuest(guest: Guest) {
     this.selectedGuest = guest;
+    console.log(this.selectedGuest);
   }
 
   setSection(section: SectionGuest) {

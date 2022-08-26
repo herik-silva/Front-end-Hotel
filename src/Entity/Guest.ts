@@ -3,15 +3,15 @@ import People from "./People";
 class Guest extends People {
     private id: number | undefined;
     private companyId: number | undefined;
-    private lastAcommodationId: number | undefined;
+    private lastAcommodationId: number;
     private city: string
 
-    constructor(name: string, contactPhone: Array<string>, 
+    constructor(name: string, contactPhone: string, 
             cpf: string, city: string, 
             photo: string | undefined = undefined,
             company: number | undefined = undefined,
             id: number | undefined = undefined, 
-            lastAccommodationId: number | undefined = undefined
+            lastAccommodationId: number = 1
         ){
         super(name, cpf, contactPhone, photo);
 
@@ -22,15 +22,15 @@ class Guest extends People {
     }
 
     static genPlaceHolder(name: string): Guest {
-        const placeHolder = new Guest(name, [""], "", "");
+        const placeHolder = new Guest(name, "", "", "");
         return placeHolder;
     }
 
-    getId(): number | undefined{
+    getId(): number {
         if(this.id)
             return this.id;
 
-        return undefined;
+        return -1;
     }
 
     getCompany(): number | void {
@@ -38,11 +38,8 @@ class Guest extends People {
             return this.companyId;
     }
 
-    getLastAccommodationId(): number | undefined {
-        if(this.lastAcommodationId)
-            return this.lastAcommodationId;
-
-        return undefined;
+    getLastAccommodationId(): number {
+        return this.lastAcommodationId;
     }
 
     getCity(): string {
