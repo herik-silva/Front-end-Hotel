@@ -21,6 +21,11 @@ export class ReserveListComponent implements OnInit {
     this.reserveListView = this.reserveList.filter(reserveRow => reserveRow.reserve.guestName.includes(filter));
   }
 
+  @Input() set updateList(update: boolean) {
+    this.reserveList = [];
+    this.getReserves();
+  }
+
   @Input() set newReserve(newReserve: ReserveView | undefined) {
     if(newReserve)
       this.reserveList.push({reserve: newReserve, row: {class: ""}});

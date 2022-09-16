@@ -94,6 +94,8 @@ export class RoomViewComponent implements OnInit {
           const roomCard = new RoomCard(room, undefined, undefined, room.status);
           this.roomList.push(roomCard);
         }
+
+        console.log(this.roomView);
       }
     })
   }
@@ -102,6 +104,7 @@ export class RoomViewComponent implements OnInit {
     const roomCard = new RoomCard(newRoom, undefined, undefined, "Livre");
     this.roomList.push(roomCard);
     this.roomList.sort((roomA, roomB) => roomA.number - roomB.number);
+    this.roomView = this.roomList;
   }
 
   editRoom(data: Array<any>) {
@@ -113,6 +116,7 @@ export class RoomViewComponent implements OnInit {
     this.roomList[index].imgBase64 = room.imgBase64;
     
     this.roomList.sort((roomA, roomB) => roomA.number - roomB.number);
+    this.roomView = this.roomList;
   }
 
   /**

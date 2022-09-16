@@ -12,10 +12,12 @@ export class ReserveInfoBarComponent implements OnInit {
 
   @Output() showInfoEmitter: EventEmitter<SectionReserve>;
   @Output() checkinEmitter: EventEmitter<SectionReserve>;
+  @Output() checkoutEmitter: EventEmitter<SectionReserve>;
 
   constructor() {
     this.showInfoEmitter = new EventEmitter();
     this.checkinEmitter = new EventEmitter();
+    this.checkoutEmitter = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -40,5 +42,10 @@ export class ReserveInfoBarComponent implements OnInit {
     console.log(this.reserve);
     if(this.reserve)
       this.checkinEmitter.emit("ALERT");
+  }
+
+  emitCheckout(): void {
+    if(this.reserve)
+      this.checkoutEmitter.emit("CHECKOUT")
   }
 }

@@ -14,6 +14,7 @@ interface ReserveView {
     employeeName: string;
     observation: string;
     celPhone: string;
+    diaryPrice: number;
 }
 
 export default ReserveView;

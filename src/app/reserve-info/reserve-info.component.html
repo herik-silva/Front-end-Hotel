@@ -54,6 +54,22 @@
                     <textarea disabled cols="30" rows="10" [value]="selectedReserve?.observation"></textarea>
                 </div>
             </div>
+            <div class="row" *ngIf="isCheckout">
+                <div class="field">
+                    <label>Total a pagar</label>
+                    <h3 [innerText]="'R$ ' + valueToPay"></h3>
+                </div>
+                <div class="field input">
+                    <label>Desconto</label>
+                    <div class="input-discount">
+                        <input type="number" placeholder="0,00" min="0" [formControl]="discount" (keydown)="updateValueToPay($event)">
+                        <button (click)="updateValueToPay()">Aplicar</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <div class="buttons" *ngIf="isCheckout">
+        <button>Check-out</button>
+    </div>
 </div>
